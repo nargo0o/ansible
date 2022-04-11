@@ -1,0 +1,2 @@
+[apache]
+client_apache ansible_host=51.250.109.89
