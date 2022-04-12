@@ -1,0 +1,29 @@
+- name: Apache installation
+  apt:
+    name: apache2
+    state: present
+
+- name: Apache module installation
+  apt:
+    name:
+      - apache2-bin
+      - apache2-data
+      - apache2-utils
+      - libfcgi-perl
+    state: present
+
+- name: PHP installation
+  apt:
+    name:
+      - php
+      - php-cli
+      - php-mysql
+      - libapache2-mod-php
+    state: present
+
+- name: phpinfo() to check page
+  template:
+    src: ./templates/info.php.j2
+    dest: /var/www/html/info.php
+  notify:
+    - restart Apache
